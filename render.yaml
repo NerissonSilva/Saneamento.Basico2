@@ -3,11 +3,18 @@ services:
     name: saneamento-app
     runtime: node
     plan: free
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
+    buildCommand: |
+      echo "=== Build started ==="
+      echo "Current directory: $(pwd)"
+      ls -la
+      cd backend && npm install
+      echo "=== Build completed ==="
+    startCommand: cd backend && node src/server.js
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
         generateValue: true
+      - key: FRONTEND_URL
+        value: https://saneamento-app.onrender.com
