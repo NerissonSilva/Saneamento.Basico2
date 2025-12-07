@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Saneamento Básico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <div class="card">
+                <div class="logo">💧</div>
+                <h1>Saneamento Básico</h1>
+                <p class="subtitle">Sistema de Monitoramento</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Senha</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <p class="link-text">
+                        Não tem conta? <a href="#" onclick="showRegister(event)">Cadastre-se</a>
+                    </p>
+                </form>
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="registerPage" class="page">
+            <div class="card">
+                <div class="logo">💧</div>
+                <h1>Criar Conta</h1>
+                <p class="subtitle">Cadastro no Sistema</p>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Senha</label>
+                        <input type="password" id="registerPassword" required placeholder="••••••••" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha</label>
+                        <input type="password" id="confirmPassword" required placeholder="••••••••" minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <p class="link-text">
+                        Já tem conta? <a href="#" onclick="showLogin(event)">Faça login</a>
+                    </p>
+                </form>
+                <div id="registerError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <div class="dashboard">
+                <header class="dashboard-header">
+                    <div class="header-left">
+                        <div class="logo-small">💧</div>
+                        <h1>Saneamento Básico</h1>
+                    </div>
+                    <div class="header-right">
+                        <span id="userEmail"></span>
+                        <button onclick="logout()" class="btn btn-secondary">Sair</button>
+                    </div>
+                </header>
+                
+                <div class="dashboard-content">
+                    <div class="welcome-card">
+                        <h2>📊 Estatísticas Nacionais de Saneamento</h2>
+                        <p>Dados atualizados do sistema de saneamento básico brasileiro</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card blue">
+                            <div class="stat-icon">💧</div>
+                            <h3>Água Potável</h3>
+                            <p class="stat-number" id="aguaTotal">-</p>
+                            <p class="stat-detail">Cobertura nacional</p>
+                        </div>
+                        <div class="stat-card green">
+                            <div class="stat-icon">🚰</div>
+                            <h3>Esgoto</h3>
+                            <p class="stat-number" id="esgotoTotal">-</p>
+                            <p class="stat-detail">Coleta de esgoto</p>
+                        </div>
+                        <div class="stat-card orange">
+                            <div class="stat-icon">🗑️</div>
+                            <h3>Coleta de Lixo</h3>
+                            <p class="stat-number" id="coletaTotal">-</p>
+                            <p class="stat-detail">Cobertura nacional</p>
+                        </div>
+                        <div class="stat-card purple">
+                            <div class="stat-icon">♻️</div>
+                            <h3>Tratamento</h3>
+                            <p class="stat-number" id="tratamentoTotal">-</p>
+                            <p class="stat-detail">Esgoto tratado</p>
+                        </div>
+                    </div>
+
+                    <div class="charts-section">
+                        <div class="chart-card">
+                            <h3>📍 Cobertura por Região</h3>
+                            <div id="regioesChart" class="chart-content"></div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <h3>💰 Investimentos (Bilhões R$)</h3>
+                            <div id="investimentosChart" class="chart-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
